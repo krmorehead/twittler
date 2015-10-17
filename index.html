@@ -26,31 +26,24 @@
 
         //updates the data every .5 second for new tweets
         function update(){
-          var user = $(this).user;
-          findNewTweets();
+          findNewTweets();          
           setTimeout(update, 500);
         };
 
-
-
-        function seeTimeline(){
-            hideTweets();
-            //console.log($(this))
-           // $('button').hide()
-           //streams.users.user                
+        function seeTimeline(user){
+          hideTweets();
+          $userTweets = $('.tweet .user').filter(function(){
+            return $(this).text() === user
+          }).parent()
+          revealTweets($userTweets)
         }
 
-        function revealTweets(){
-          $('.tweet .user').not('.view').on('click', function(){
-            console.log( $(this).text() )
-            seeTimeline()
-          })
-
-          $('.tweet').addClass('view')
+        function revealTweets($userTweets){
+          //default
+          if(!$userTweets){$userTweets = $('.tweet')}
+            
+          $userTweets.addClass('view')
           $('.tweet.view').slideDown("fast")
-
-          //update the links on the new tweets
-        
         };
 
         function hideTweets(){
@@ -66,6 +59,7 @@
             var tweet = streams.home[viewedTweets];
             var $tweet = $('<div class = tweet></div>');
             $tweet.text( tweet.message);
+
             //add the tweet to the body
             if($('.tweet').length){
              $('.tweet:first').before($tweet);
@@ -76,12 +70,17 @@
             $user = $('<p class = user></p>') 
             $user.text('@' + tweet.user + ':')
             $($user).appendTo($('.tweet:first'))
-            
+
+            //add link to the user
+            $('.user:first').on('click', function(){           
+              seeTimeline($(this).text())
+            })          
+
             //add the timestamp
             $timestamp = $('<p class = timestamp></p>')  
             $timestamp.text("Created " +Date.now())
             $($timestamp).appendTo($('.tweet:first'))
-          }          
+          }
         }
 
       });
