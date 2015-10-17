@@ -53,11 +53,17 @@
           for(;viewedTweets < allTweetsLength ;viewedTweets++){
             var tweet = streams.home[viewedTweets];
             var $tweet = $('<div class = tweet></div>');
-            $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + Date.now());
+            $tweet.text('@' + tweet.user + ': ' + tweet.message);
+            //add the tweet to the body
             if($('.tweet').length){
              $('.tweet:first').before($tweet);
             }
-           else{$tweet.appendTo($body);}  
+            else{$tweet.appendTo($body);}
+            
+            //add the timestamp
+            $timestamp = $('<p class = timestamp></p>')  
+            $timestamp.text("Created " +Date.now())
+            $($timestamp).appendTo($('.tweet:first'))
           }          
         }
 

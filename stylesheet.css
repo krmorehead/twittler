@@ -19,6 +19,15 @@ button:hover{
 	background-color:darkgrey;
 }
 
+.timestamp{
+	font-size:10px;
+	background-color: beige;
+	border-radius:10px;
+	padding:0px;
+	text-align: right;
+	margin:-6px 0 -4px 0;
+}
+
 .tweet{
 	background-color: beige;
 	width:70%;
