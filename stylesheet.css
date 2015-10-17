@@ -4,15 +4,27 @@ body {
 
 }
 
+h1{
+	font-family: cursive;
+	font-weight: bold;
+}
+
 button{
 	border-radius:15px;
 	font-size:24px;
 	padding:5px;
-	width:80%;
 	height:10%;
 	background-color: grey;
 	display:block;
-	margin:0 10% 0 10%;
+}
+
+button.reveal{
+	width:80%;
+	margin:0 10% 2% 10%;
+}
+
+button.home{
+	margin:-7% 5% 2% 70%;
 }
 
 button:hover{
