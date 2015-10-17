@@ -17,17 +17,15 @@
  
         update()
         revealTweets()
-        $('button.reveal').on('click', function(){revealTweets()})
+        $('button.reveal').on('click', function(){
+          revealTweets()
+        })
 
 
         //functions added bellow
 
         //updates the data every .5 second for new tweets
         function update(){
-
-          $('.tweet').on('click', seeTimeline)
-
-
           var user = $(this).user;
           findNewTweets();
           setTimeout(update, 500);
@@ -37,14 +35,22 @@
 
         function seeTimeline(){
             hideTweets();
-            console.log($(this))
+            //console.log($(this))
            // $('button').hide()
            //streams.users.user                
         }
 
         function revealTweets(){
+          $('.tweet .user').not('.view').on('click', function(){
+            console.log( $(this).text() )
+            seeTimeline()
+          })
+
           $('.tweet').addClass('view')
           $('.tweet.view').slideDown("fast")
+
+          //update the links on the new tweets
+        
         };
 
         function hideTweets(){
@@ -59,12 +65,17 @@
           for(;viewedTweets < allTweetsLength ;viewedTweets++){
             var tweet = streams.home[viewedTweets];
             var $tweet = $('<div class = tweet></div>');
-            $tweet.text('@' + tweet.user + ': ' + tweet.message);
+            $tweet.text( tweet.message);
             //add the tweet to the body
             if($('.tweet').length){
              $('.tweet:first').before($tweet);
             }
             else{$tweet.appendTo($body);}
+
+            //add the user
+            $user = $('<p class = user></p>') 
+            $user.text('@' + tweet.user + ':')
+            $($user).appendTo($('.tweet:first'))
             
             //add the timestamp
             $timestamp = $('<p class = timestamp></p>')  
