@@ -1,0 +1,23 @@
+body {
+	font-family:20px/22px tohoma arial;
+
+}
+
+button{
+	padding:5px;
+	width:80%;
+	height:10%;
+	background-color: grey;
+	display:block;
+	margin:0 10% 0 10%;
+}
+
+.tweet{
+	font-family:;
+	text-align: center;
+	display:none;
+}
+
+div.tweet.view{
+	display:block;
+}

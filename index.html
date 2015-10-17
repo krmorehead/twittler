@@ -3,21 +3,61 @@
   <head>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <link rel = "stylesheet" type= "text/css" href= "stylesheet.css">
   </head>
   <body>
     <script>
 
       $(document).ready(function(){
         var $body = $('body');
-        $body.html('');
+        $body.html('');        
 
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
-          index -= 1;
+        var $button = $('<button class= reveal>See new Tweets</button>') 
+        $button.prependTo($body)
+ 
+        update()
+        revealTweets()
+        $('button.reveal').on('click', function(){revealTweets()})
+
+
+        
+
+        function seeTimeline(){
+          $('.tweet').on('click', function(){
+            hideTweets();
+            $('button').hide()
+           //streams.users.user
+          })          
+        }
+
+        function revealTweets(){
+          $('.tweet').addClass('view')
+        };
+
+        function hideTweets(){
+          $('.tweet').removeClass('view')
+        }
+
+        function update(){
+
+
+          var user = $(this).user;
+          findNewTweets();
+          setTimeout(update, 500);
+        };
+
+        function findNewTweets(){
+          var viewedTweets = $('.tweet').length;
+          var allTweetsLength = streams.home.length;
+          for(;viewedTweets < allTweetsLength ;viewedTweets++){
+            var tweet = streams.home[viewedTweets];
+            var $tweet = $('<div class = tweet></div>');
+            $tweet.text('@' + tweet.user + ': ' + tweet.message + " " + Date.now());
+            if($('.tweet').length){
+             $('.tweet:first').before($tweet);
+            }
+           else{$tweet.appendTo($body);}  
+          }          
         }
 
       });
