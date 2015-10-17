@@ -35,11 +35,11 @@ button:hover{
 	padding:5px;
 	border:1px solid black;
 	text-align: center;
-	display:none;	
+	display:none;
+	margin:auto;	
 }
 
 .tweet.view{
-	margin: auto;
 }
 
 .tweet.view:hover{

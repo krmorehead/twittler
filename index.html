@@ -20,32 +20,38 @@
         $('button.reveal').on('click', function(){revealTweets()})
 
 
-        
+        //functions added bellow
 
-        function seeTimeline(){
-          $('.tweet').on('click', function(){
-            hideTweets();
-            $('button').hide()
-           //streams.users.user
-          })          
-        }
-
-        function revealTweets(){
-          $('.tweet').addClass('view')
-          $('.tweet.view').slideDown("fast",function(){})
-        };
-
-        function hideTweets(){
-          $('.tweet').removeClass('view')
-        }
-
+        //updates the data every .5 second for new tweets
         function update(){
+
+          $('.tweet').on('click', seeTimeline)
 
 
           var user = $(this).user;
           findNewTweets();
           setTimeout(update, 500);
         };
+
+
+
+        function seeTimeline(){
+            hideTweets();
+            console.log($(this))
+           // $('button').hide()
+           //streams.users.user                
+        }
+
+        function revealTweets(){
+          $('.tweet').addClass('view')
+          $('.tweet.view').slideDown("fast")
+        };
+
+        function hideTweets(){
+          $('.tweet').removeClass('view')
+          $('.tweet').slideUp('fast')
+        }
+
 
         function findNewTweets(){
           var viewedTweets = $('.tweet').length;
