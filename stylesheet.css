@@ -1,9 +1,12 @@
 body {
 	font-family:20px/22px tohoma arial;
+	background-color: lightblue;
 
 }
 
 button{
+	border-radius:15px;
+	font-size:24px;
 	padding:5px;
 	width:80%;
 	height:10%;
@@ -12,12 +15,25 @@ button{
 	margin:0 10% 0 10%;
 }
 
-.tweet{
-	font-family:;
-	text-align: center;
-	display:none;
+button:hover{
+	background-color:darkgrey;
 }
 
-div.tweet.view{
+.tweet{
+	background-color: beige;
+	width:70%;
+	border-radius:10px;
+	padding:5px;
+	border:1px solid black;
+	text-align: center;
+	display:none;	
+}
+
+.tweet.view{
 	display:block;
+	margin: auto;
+}
+
+.tweet.view:hover{
+	color:blue;
 }

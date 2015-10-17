@@ -52,7 +52,7 @@
           for(;viewedTweets < allTweetsLength ;viewedTweets++){
             var tweet = streams.home[viewedTweets];
             var $tweet = $('<div class = tweet></div>');
-            $tweet.text('@' + tweet.user + ': ' + tweet.message + " " + Date.now());
+            $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + Date.now());
             if($('.tweet').length){
              $('.tweet:first').before($tweet);
             }
