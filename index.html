@@ -28,16 +28,16 @@
           hideTweets();
           clearHead();
 
-          var $button = $('<button class= home>Return Home</button>') 
-          $button.prependTo($body)
-
-          $('button.home').on('click',goHome)
-
           var profileHeader = user
           var userName =  user.split("").slice(1,-1).join("")
           $profileHeader = $('<h1 class></h1>')  
           $profileHeader.text("Welcome to " + userName +"'s timeline")
           $($profileHeader).prependTo($('body'))
+
+          var $button = $('<button class= home>Return Home</button>') 
+          $button.prependTo($('h1'))
+
+          $('button.home').on('click',goHome)
 
           $userTweets = $('.tweet .user').filter(function(){
             return $(this).text() === user
@@ -73,7 +73,7 @@
             else{$tweet.appendTo($body);}
 
             //add the user
-            $user = $('<p class = user></p>') 
+            $user = $('<div class = user></div>') 
             $user.text('@' + tweet.user + ':')
             $($user).appendTo($('.tweet:first'))
 
@@ -104,7 +104,7 @@
           revealTweets();          
         }
         function clearHead(){
-          $('button').remove();
+          $('button').slideUp();
           $('h1').remove()
         }
       });

@@ -7,6 +7,9 @@ body {
 h1{
 	font-family: cursive;
 	font-weight: bold;
+	width: 100%;
+	margin: 0% 50% 0% 0%;
+	display:inline-block;
 }
 
 button{
@@ -24,7 +27,8 @@ button.reveal{
 }
 
 button.home{
-	margin:-7% 5% 2% 70%;
+	margin:0% 0% -5% 70%;
+	z-index:2;
 }
 
 button:hover{
@@ -34,10 +38,10 @@ button:hover{
 	font-size:15px;
 	font-weight:bold;
 	background-color: beige;
-	border-radius:10px;
 	padding:0px;
-	text-align: left;
-	margin:-20px 0 -4px 0;
+	display: block;
+	margin:-1% 80% -2% 0;
+	width:15%;
 }
 .timestamp{
 	font-size:10px;
